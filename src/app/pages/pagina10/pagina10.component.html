@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="preview">
+        <h3 style="display: flex;margin-bottom: 10px;margin-top: 10px;text-align:justify;"><span style="margin-right: 20px;">A.1.5 </span> Viviendas</h3>
+        <p style="text-align:justify;margin-bottom: 5px;">Tomando en cuenta los Censos Nacionales 2017, 
+            <span class="highlight">{{ datos.viviendasComponent1 || ''}}</span> 
+            se hallan un total de <span class="highlight">{{ datos.totalViviendas || ''}}</span> 
+            viviendas empadronadas. De este conjunto se sabe que 
+            <span class="highlight">{{ datos.totalViviendasOcupadas || ''}}</span> son viviendas
+            particulares con ocupantes presentes. El acápite de estructura de las 
+            viviendas y la sección de servicios básicos toman como referencia 
+            dicha cantidad de viviendas (<span class="highlight">{{ datos.totalViviendasOcupadas || ''}}</span>) 
+            que representan el <span class="highlight">{{ datos.porcentajeViviendasOcupadas }}</span>% del total de viviendas existentes.</p>
+        <p style="text-align:justify;margin-bottom: 5px;"><span class="highlight">{{ datos.viviendasComponent2 }}</span></p>
+        <div id="ubicacionTable">
+            <p style="text-align: center;font-weight: 700;">Cuadro N° 3. 14</p>
+            <p style="text-align: center;font-weight: 700;">Condición de las Viviendas en {{ datos.distritoSeleccionado }} (2017)</p>
+            <table style="width: 100%;margin-top: 10px;border-spacing: 0;margin-bottom: 10px;border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px">Categoría</th>
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px;">Casos</th>
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px;">Porcentaje</th>                        
+                    </tr>
+                </thead>
+                <tbody id="listActividadEconomica"> 
+                    <tr>
+                        <td style="border: solid 1px #000000;">Vivienda Ocupada, con personas presentes</td>
+                        <td style="border: solid 1px #000000;"><span class="totalViviendasOcupadas subrayado"></span></td>
+                        <td style="border: solid 1px #000000;"><span class="porcentajeViviendasOcupadas subrayado"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="border: solid 1px #000000;">Viviendas con otra condición</td>
+                        <td style="border: solid 1px #000000;"><span class="totalViviendasOtraCondicion subrayado"></span></td>
+                        <td style="border: solid 1px #000000;"><span class="porcentajeViviendasOtraCondicion subrayado"></span></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px">Total</th>
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px"><span class="totalViviendas"></span></th>
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px">100.00%</th>
+                    <tr>
+                </thead>
+            </table>  
+        </div>
+        <p style="text-align:justify;margin-bottom: 5px;">Fuente: Reporte de Indicadores de Desarrollo e Inclusión Social de Centro Poblado – REDINFORMA (MIDIS)</p>
+        <p style="text-align:justify;margin-bottom: 5px;font-weight: 700;"><span style="margin-right: 20px;">a.</span>Estructura</p>
+        <p style="text-align:justify;margin-bottom: 5px;"><span class="highlight">{{ datos.estructuraComponent1 }}</span></p>
+        <p style="text-align:justify;margin-bottom: 5px;"><span class="highlight">{{ datos.estructuraComponent2 }}</span></p>
+        <p style="text-align:justify;margin-bottom: 5px;"><span class="highlight">{{ datos.estructuraComponent3 }}</span></p>
+        <div id="ubicacionTable">
+            <p style="text-align: center;font-weight: 700;">Cuadro N° 3. 15</p>
+            <p style="text-align: center;font-weight: 700;">Tipos de materiales de las viviendas en {{ datos.distritoSeleccionado }} (2017)</p>
+            <table style="width: 100%;margin-top: 10px;border-spacing: 0;margin-bottom: 10px;border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px">Categoría</th>                        
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px;">Tipos de materiales</th>
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px;">Casos</th>
+                        <th style="background: #e6e6e6;padding: 7px 0px;border: solid 1px black;border-spacing: 0px;">Porcentaje</th>                        
+                    </tr>
+                </thead>
+                <tbody id="listVivienda">
+                </tbody>
+            </table>
+        </div>
+        <p style="text-align:justify;margin-bottom: 5px;">Fuente:<span class="highlight">Censos Nacionales 2017: XII de Población, VII de Vivienda y III de Comunidades Indígenas</span> </p>
+        <div class="image-gallery">
+            <div *ngFor="let img of datos.imagenes2; let i = index" class="image-item">
+                <p><strong>Fotografía N° {{ i + 1 }}:</strong> {{ img.name }}</p>
+                <img [src]="img.url" alt="{{ img.name }}" width="150">
+            </div>
+            <div style="text-align: center;">Fuente: {{ datos.consultora }}</div>
+        </div>
+    </div>
+    <div class="formulario">
+        <div class="title">Vivienda</div>
+        <div class="label">DETALLE VIVIENDAS</div>
+        <textarea class="inputstyle2" [(ngModel)]="datos.viviendasComponent1" ></textarea>
+        <div class="label">DETALLE VIVIENDAS 2</div>
+        <textarea class="inputstyle2" [(ngModel)]="datos.viviendasComponent2" ></textarea>
+        <div class="label">ESTRUCTURA COMPONENT 1</div>
+        <textarea class="inputstyle2" [(ngModel)]="datos.estructuraComponent1" ></textarea>
+        <div class="label">ESTRUCTURA COMPONENT 2</div>
+        <textarea class="inputstyle2" [(ngModel)]="datos.estructuraComponent2" ></textarea>
+        <div class="label">ESTRUCTURA COMPONENT 3</div>
+        <textarea class="inputstyle2" [(ngModel)]="datos.estructuraComponent3" ></textarea>
+
+        <div class="title">Fotografias Institucionalidad</div>
+
+        <input style="margin-bottom: 15px;" type="file" (change)="onFileSelected($event)">
+
+
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <div class="label">NOMBRE DE LA IMAGEN:</div>
+
+            <input class="inputstyle" type="text" [(ngModel)]="imageName">
+
+            <button class="guardar2" (click)="guardarImagen()">Cargar Imagen</button>
+        </div>
+
+        <div style="display: flex; gap: 20px;">
+            <button class="atras" (click)="regresar()">Atrás</button>
+            <button class="siguiente" (click)="siguientePaso()">Siguiente</button>
+        </div>
+    </div>
+</div>
