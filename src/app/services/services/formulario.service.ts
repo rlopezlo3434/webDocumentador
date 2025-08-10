@@ -13,6 +13,8 @@ export class FormularioService {
 
   datos: any = {
     projectName: '',
+    grupoAISD: '',
+    grupoAISI: '',
     departamentoSeleccionado: '',
     provinciaSeleccionada: '',
     distritoSeleccionado: '',

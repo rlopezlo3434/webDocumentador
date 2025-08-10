@@ -12,6 +12,7 @@ export class Pagina2Component {
   jsonData: any[] = [];
   opcionesFormateadas: string[] = [];
   seleccionActual: string = '';
+  nombreGrupoAISD: string = '';
 
   constructor(private formularioService: FormularioService, private router: Router) {
     this.datos = this.formularioService.obtenerDatos();
@@ -27,19 +28,26 @@ export class Pagina2Component {
     this.formularioService.actualizarDatos(this.datos);
   }
 
+  cambiarNombre() {
+    this.datos.grupoAISD = this.nombreGrupoAISD;
+    console.log('Nombre del grupo AISD actualizado:', this.datos.grupoAISD);
+    this.datos.aisdComponente1 = 'El Proyecto se ubica en el distrito de ' + (this.datos.grupoAISD != '' ? this.datos.grupoAISD : this.jsonData[0].DIST) + ', provincia de ' + this.jsonData[0].PROV + ', departamento de ' + this.jsonData[0].DPTO;
+    this.formularioService.actualizarDatos(this.datos);
+  }
+
   agregarSeleccionado() {
     if (this.seleccionActual && !this.datos.seleccionados.includes(this.seleccionActual)) {
       this.datos.seleccionados.push(this.seleccionActual);
-      this.seleccionActual = ''; 
-      this.datos.aisdComponente1 = 'El Proyecto se ubica en el distrito de ' + this.jsonData[0].DIST  + ', provincia de ' + this.jsonData[0].PROV + ', departamento de ' + this.jsonData[0].DPTO;
+      this.seleccionActual = '';
+      this.datos.aisdComponente1 = 'El Proyecto se ubica en el distrito de ' + (this.datos.grupoAISD != '' ? this.datos.grupoAISD : this.jsonData[0].DIST) + ', provincia de ' + this.jsonData[0].PROV + ', departamento de ' + this.jsonData[0].DPTO;
     }
   }
-  
+
   eliminarSeleccionado(index: number) {
     this.datos.seleccionados.splice(index, 1);
     this.formularioService.actualizarDatos(this.datos);
   }
-  
+
   seleccionarTodos() {
     this.datos.seleccionados = [...this.opcionesFormateadas];
     this.formularioService.actualizarDatos(this.datos);

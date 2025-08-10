@@ -37,11 +37,20 @@
             </li>
         </ul>
 
+        <div class="label">
+            <div class="label">CAMBIAR NOMBRE DEL GRUPO</div>
+            <input type="text" style="padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;" [(ngModel)]="nombreGrupoAISD" placeholder="Nombre del grupo AISD" />
+            <button class="boton-seleccionar-todos" (click)="cambiarNombre()">Cambiar Nombre</button>
+        </div>
+
         <div class="label">AISD COMPONENTE 1:</div>
-        <textarea  class="inputstyle" [(ngModel)]="datos.aisdComponente1" placeholder="..."></textarea>
+        <textarea class="inputstyle" [(ngModel)]="datos.aisdComponente1" placeholder="..."></textarea>
 
         <div class="label">AISD COMPONENTE 2:</div>
-        <textarea  class="inputstyle" [(ngModel)]="datos.aisdComponente2" placeholder="..."></textarea>
+        <textarea class="inputstyle" [(ngModel)]="datos.aisdComponente2" placeholder="..."></textarea>
 
         <div style="display: flex; gap: 20px;">
             <button class="atras" (click)="regresar()">Atrás</button>
